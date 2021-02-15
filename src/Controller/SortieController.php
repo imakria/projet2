@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Participant;
+use App\Entity\Sortie;
+use App\Form\SortieType;
 use App\Repository\ParticipantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,19 +32,39 @@ class SortieController extends AbstractController
     }
 
     /**
-     * @Route("/navbar", name="navbar")
+     * @Route("/addSortie", name="addSortie")
      * @param ParticipantRepository $repository
      * @param Request $rq
+     * @param EntityManagerInterface $em
      * @return Response
      */
-    public function navbar(ParticipantRepository $repository, Request $rq): Response
+    public function addSortie(ParticipantRepository $repository, Request $rq, EntityManagerInterface $em): Response
     {
+        $sortie = new Sortie();
+        $sortieForm = $this->createForm(SortieType::class, $sortie);
+        $participantConnected = $this->getUser();
 
-        $participant = $this->getUser();
+        $sortieForm->handleRequest($rq);
 
-        return $this->render('inc/navbar.html.twig', [
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
+            $sortie->setNom($sortieForm->get('nom')->getData());
+            $sortie->setDateHeureDebut($sortieForm->get('dateHeureDebut')->getData());
+            $sortie->setDuree($sortieForm->get('duree')->getData());
+            $sortie->setDateLimiteInscription($sortieForm->get('dateLimiteInscription')->getData());
+            $sortie->setNbInscriptionMax($sortieForm->get('nbInscriptionMax')->getData());
+            $sortie->setInfosSortie($sortieForm->get('infosSortie')->getData());
+            $sortie->setCampus($sortieForm->get('campus')->getData());
+            $sortie->setVille($sortieForm->get('ville')->getData());
+            $sortie->setLieu($sortieForm->get('lieu')->getData());
+            $em->persist($sortie);
+        }
+
+        $em->flush();
+
+        return $this->render('sortie/addSortie.html.twig', [
             'controller_name' => 'SortieController',
-            'participant' => $participant,
+            'participant' => $participantConnected,
+            'sortieForm' => $sortieForm->createView(),
         ]);
     }
 

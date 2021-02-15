@@ -192,5 +192,62 @@ h2 {
     margin-top: 0px;
     width: 100%;
     text-align: center; } }
+.formSectionAddSortie {
+  /*background-color: red;*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /*----------------------------------------------------*/ }
+  .formSectionAddSortie *, .formSectionAddSortie ::before, .formSectionAddSortie ::after {
+    box-sizing: border-box; }
+  .formSectionAddSortie body {
+    margin: 0;
+    padding: 0; }
+  .formSectionAddSortie h2 {
+    text-align: center; }
+  .formSectionAddSortie .flexBlockColumns {
+    display: flex;
+    justify-content: space-between; }
+    .formSectionAddSortie .flexBlockColumns .flexColumn1, .formSectionAddSortie .flexBlockColumns .flexColumn2 {
+      width: 45%; }
+    .formSectionAddSortie .flexBlockColumns .row {
+      display: flex;
+      margin-bottom: 10px; }
+      .formSectionAddSortie .flexBlockColumns .row #minutes {
+        padding-left: 10px; }
+      .formSectionAddSortie .flexBlockColumns .row label {
+        /*background-color: green;*/
+        width: 200px; }
+      .formSectionAddSortie .flexBlockColumns .row input {
+        /*	background-color: blue;
+        */
+        display: flex;
+        flex-grow: 1;
+        border: solid 1px #ccc; }
+  .formSectionAddSortie .btnSubmit {
+    /*background-color: gray;*/
+    width: 100%;
+    margin: 30px auto 0 auto;
+    display: flex;
+    justify-content: center; }
+    .formSectionAddSortie .btnSubmit .btn {
+      /*background-color: blue;*/
+      width: 100%;
+      margin: 20px 20px;
+      padding: 15px;
+      text-align: center; }
+  @media screen and (max-width: 850px) {
+    .formSectionAddSortie .flexBlockColumns {
+      display: block;
+      margin: 0 auto; }
+    .formSectionAddSortie .flexColumn1, .formSectionAddSortie .flexColumn2 {
+      width: 100%; }
+    .formSectionAddSortie .btnSubmit {
+      display: block;
+      width: 50%; }
+    .formSectionAddSortie .btn {
+      margin-top: 0px;
+      width: 100%;
+      text-align: center; } }
 
 /*# sourceMappingURL=app.css.map */

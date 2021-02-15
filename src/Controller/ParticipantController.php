@@ -65,6 +65,7 @@ class ParticipantController extends AbstractController
                 );
                 $participantConnected->setPicture($newFilename);
 
+            }
                 $participantConnected->setPseudo($participantForm->get('pseudo')->getData());
                 $participantConnected->setNom($participantForm->get('nom')->getData());
                 $participantConnected->setPrenom($participantForm->get('prenom')->getData());
@@ -72,7 +73,6 @@ class ParticipantController extends AbstractController
                 $participantConnected->setMail($participantForm->get('mail')->getData());
                 $participantConnected->setMotPasse($passwordEncoder->encodePassword($participant, $participantForm->get('motPasse')->getData()));
                 $participantConnected->setCampus($participantForm->get('campus')->getData());
-            }
             $em->persist($participantConnected);
             $em->flush();
             $this->addFlash('success', 'Added successfully');

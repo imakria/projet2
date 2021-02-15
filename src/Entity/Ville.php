@@ -29,8 +29,16 @@ class Ville
 
     /**
      * @ORM\Column(type="string")
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="codePostal")
      */
     private $codePostal;
+
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\Ville", mappedBy="ville")
+     */
+    private $sorties;
+
+
 
     public function getId(): ?int
     {
@@ -77,5 +85,9 @@ class Ville
         $this->lieux = $lieux;
     }
 
+    public function __toString()
+    {
+return $this->nom;
+    }
 
 }

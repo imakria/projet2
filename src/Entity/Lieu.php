@@ -24,16 +24,19 @@ class Lieu
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="rue")
      */
     private $rue;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @ORM\OneToOne (targetEntity="App\Entity\Sortie", mappedBy="$latitude")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @ORM\OneToOne (targetEntity="App\Entity\Sortie", mappedBy="$longitude")
      */
     private $longitude;
 
@@ -132,5 +135,7 @@ class Lieu
         $this->ville = $ville;
     }
 
-
+public function __toString(): string {
+        return $this->nom;
+}
 }

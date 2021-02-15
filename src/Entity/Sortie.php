@@ -68,6 +68,31 @@ class Sortie
      */
     private $participants;
 
+    /**
+     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
+     */
+    private $ville;
+
+    /**
+     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
+     */
+    private $rue;
+
+    /**
+     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="codePostal")
+     */
+    private $codePostal;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Lieu", inversedBy="latitude")
+     */
+    private $latitude;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Lieu", inversedBy="longitude")
+     */
+    private $longitude;
 
 
     public function getId(): ?int
@@ -222,6 +247,88 @@ class Sortie
     {
         $this->participant = $participant;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville): void
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRue()
+    {
+        return $this->rue;
+    }
+
+    /**
+     * @param mixed $rue
+     */
+    public function setRue($rue): void
+    {
+        $this->rue = $rue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * @param mixed $codePostal
+     */
+    public function setCodePostal($codePostal): void
+    {
+        $this->codePostal = $codePostal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param mixed $latitude
+     */
+    public function setLatitude($latitude): void
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param mixed $longitude
+     */
+    public function setLongitude($longitude): void
+    {
+        $this->longitude = $longitude;
+    }
+
+
 
 
 }
