@@ -1,0 +1,15 @@
+<div class="topnav">
+    <div class="logo">
+        <a href="{{ path('home') }}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
+    </div>
+    <div class="tabs">
+        <a href="">Villes</a>
+        <a href="">Campus</a>
+        <a href="{{ path('home') }}">Accueil</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('myProfile')}}">Mon profil</a>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        {% endif %}
+    </div>
+
+</div>

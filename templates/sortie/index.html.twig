@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SortieController!{% endblock %}
+
+
+
+{% block body %}
+
+
+    {% for message in app.flashes('success') %}
+        <div class="messageSuccess">
+            Bonjour {{ message }}
+        </div>
+    {% endfor %}
+{{ participant.id }}
+
+
+    <h2>Filtrer les sorties</h2>
+    <section>
+        <form action="#">
+            <div class="flexBlocColumns">
+                <div class="column1">
+                    <div class="row">
+                        <label for="campus">Campus</label>
+                        <input id="campus" type="select">
+                    </div>
+
+                    <div class="row">
+                        <label for="tripName">Le nom de la sortie contient:</label>
+                        <input type="search" id="tripName" placeholder="search">
+                    </div>
+
+                    <div id="fromTo" class="row">
+                        <div>
+                            <label for="form">Entre</label>
+                            <input id="form" type="date">
+                        </div>
+                        <div>
+                            <label id="spaceTo" for="to">et</label>
+                            <input id="to" type="date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column2">
+                    <div class="row">
+                        <input id="check1" type="checkbox">
+                        <label for="check1"> Sorties dont je suis l'organisateur/trice</label>
+                    </div>
+                    <div class="row">
+                        <input id="check2" type="checkbox">
+                        <label for="check2"> Sorties auxquelles je suis inscrit/e</label>
+                    </div>
+                    <div class="row">
+                        <input id="check3" type="checkbox">
+                        <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label>
+                    </div>
+                    <div class="row">
+                        <input id="check4" type="checkbox">
+                        <label for="check4"> Sorties passées</label>
+                    </div>
+                </div>
+
+                <div class="submitBtn">
+                    <div class="row">
+                        <input type="submit" class="btn" value="Enregister">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+
+    <section class="tableBox">
+        <table>
+            <thead>
+            <tr id="headColor">
+                <th>Nom de la sortie</th>
+                <th>Date de la sortie</th>
+                <th>Clôture</th>
+                <th>Inscrits/places</th>
+                <th>Etat</th>
+                <th>Inscrit</th>
+                <th>Organisateur</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div id="createTripBtn">
+        <div class="row">
+            <input type="submit" class="btn" value="Créer une sortie">
+        </div>
+    </div>
+
+{% endblock %}

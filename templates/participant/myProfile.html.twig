@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SortieController!{% endblock %}
+
+
+
+{% block body %}
+    {# {{ form_start(participantForm) }} #}
+    {# {{ form_row(participantForm.pseudo, {'value': participantConnected.pseudo}) }} #}
+
+
+
+
+    {# {{ form_end(participantForm) }} #}
+
+
+
+    <h2>Mon profil</h2>
+    <section class=formSectionMyProfil>
+        {{ form_start(participantForm) }}
+        <form action="#">
+
+            <div class="flexBlockColumnsMyProfil">
+
+                <div class="flexColumn1">
+                    <img class="myprofilImage" src="{{ asset('uploads/'~ participantConnected.picture) }}" alt="">
+                </div>
+
+                <div class="flexColumn2">
+
+
+                    <div class="row">
+                        {{ form_row(participantForm.pseudo, {'value': participantConnected.pseudo}) }}
+                        {# <label for="username">Pseudo :</label> #}
+                        {# <input type="text" id="username" name="username"> #}
+                    </div>
+
+                    <div class="row">
+                        {{ form_row(participantForm.prenom, {'value': participantConnected.prenom}) }}
+
+                        {# <label for="name">Prénom :</label> #}
+                        {# <input type="text" id="name" name="name"> #}
+                    </div>
+
+                    <div class="row">
+                        {{ form_row(participantForm.nom, {'value': participantConnected.nom}) }}
+
+                        {# <label for="lastname">Nom :</label> #}
+                        {# <input type="text" id="lastname" name="lastname"> #}
+                    </div>
+
+                    <div class="row">
+                        {{ form_row(participantForm.telephone, {'value': participantConnected.telephone}) }}
+
+                        {# <label for="phone"> Téléphone :</label> #}
+                        {# <input type="text" id="phone" name="phone"> #}
+                    </div>
+
+                    <div class="row">
+                        {{ form_row(participantForm.mail, {'value': participantConnected.mail} ) }}
+
+                        {# <label for="email">Email :</label> #}
+                        {# <input type="text" id="email" name="email"> #}
+                    </div>
+
+
+                    <div class="row">
+                        {{ form_row(participantForm.motPasse) }}
+
+                        {# <label for="password">Mot de passe :</label> #}
+                        {# <input type="password" id="password" name="password"> #}
+                    </div>
+
+                    {# <div class="row"> #}
+                    {# <label for="confirmPassword">Confirmation :</label> #}
+                    {# <input type="password" id="confirmPassword" name="confirmPassword"> #}
+                    {# </div> #}
+
+                    <div class="row">
+                        {{ form_row(participantForm.campus, {'selected': participantConnected.campus}) }}
+                        {# <label for="campus">Campus :</label> #}
+                        {# <input type="text" id="campus" name="campus"> #}
+                    </div>
+
+                    <div class="row">
+                        {{ form_row(participantForm.picture, {'value': participantConnected.picture}) }}
+                        {# <label for="picture">Ma photo :</label> #}
+                        {# <input type="file" id="picture" name="picture"> #}
+                    </div>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                </div>
+            </div>
+
+            <div class="btnSubmit">
+                <div class="row">
+                    <input type="submit" class="btn" value="Enregister">
+                </div>
+
+                <div class="row">
+                    <input type="submit" class="btn" value="Annuler">
+                </div>
+            </div>
+            {{ form_rest(participantForm) }}
+        </form>
+        {{ form_end(participantForm) }}
+    </section>
+
+{% endblock %}

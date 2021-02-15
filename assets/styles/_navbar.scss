@@ -1,0 +1,13 @@
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a{
+    margin-right: 15px;
+  }
+
+  img {
+    width: 160px;
+  }
+}

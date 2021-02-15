@@ -1,0 +1,135 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;
+}
+
+section {
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+h2 {
+  width: 80%;
+}
+
+.flexBlocColumns {
+  display: flex;
+  justify-content: center;
+
+  .column2 {
+    margin-left: 20px;
+  }
+
+  #fromTo {
+    display: flex;
+  }
+
+  #spaceTo {
+    padding: 0 5px;
+  }
+
+}
+
+.submitBtn {
+  align-self: center;
+  margin-left: 20px;
+}
+
+.btn {
+  padding: 20px;
+  margin: 0px;
+}
+
+input {
+  /*background-color: green*/
+;
+  margin-bottom: 10px;
+}
+
+
+/*--------------------------------*/
+
+.tableBox {
+  overflow-y: scroll;
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+
+  th, td {
+    padding: 10px;
+  }
+
+  table {
+    margin: 0px auto 0px auto;
+    table-layout: auto;
+    width: 100%;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #d3d1d1;
+    color: black;
+  }
+
+  #headColor {
+    background-color: #d3d1d1;
+  }
+}
+
+table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #e8e8e8;
+}
+
+#createTripBtn {
+  /*	background-color: pink;
+  */
+  width: 100%;
+
+  .row {
+    /*	background-color: red;
+    */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+/*--------------------------------*/
+
+@media screen and (max-width: 1000px) {
+  form {
+    width: 100%;
+  }
+
+  .flexBlocColumns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .column1, .column2 {
+    margin-bottom: 20px;
+  }
+
+  .submitBtn {
+    margin: 0;
+  }
+}
