@@ -18,7 +18,9 @@
 
 <h2>Créer une sortie</h2>
 <section class=formSectionAddSortie>
-    <form action="#">
+    {{ form_start(sortieForm) }}
+
+
 
         <div class="flexBlockColumns">
             <div class="flexColumn1">
@@ -89,14 +91,14 @@
                 </div>
 
                 <div class="row">
-                    {{ form_row(sortieForm.rue)}}
+{#                    {{ form_row(sortieForm.rue)}}#}
 
 {#                    <label for="road"> Rue :</label>#}
 {#                    <input type="text" id="road" name="road">#}
                 </div>
 
                 <div class="row">
-                    {{ form_row(sortieForm.codePostal)}}
+{#                    {{ form_row(sortieForm.codePostal)}}#}
 
 {#                    <label for="postCode">Code postal :</label>#}
 {#                    <input type="text" id="postCode" name="postCode">#}
@@ -104,14 +106,14 @@
 
 
                 <div class="row">
-                    {{ form_row(sortieForm.latitude)}}
+{#                    {{ form_row(sortieForm.latitude)}}#}
 
 {#                    <label for="latitude">Latitude :</label>#}
 {#                    <input type="text" id="latitude" name="latitude">#}
                 </div>
 
                 <div class="row">
-                    {{ form_row(sortieForm.longitude)}}
+{#                    {{ form_row(sortieForm.longitude)}}#}
 
 {#                    <label for="longitude">Longitude :</label>#}
 {#                    <input type="text" id="longitude" name="longitude">#}
@@ -124,16 +126,17 @@
                 <input type="submit" class="btn" value="Enregister">
             </div>
 
-            <div class="row">
-                <input type="submit" class="btn" value="Publier la sortie">
-            </div>
+{#            <div class="row">#}
+{#                <input type="submit" class="btn" value="Publier la sortie">#}
+{#            </div>#}
 
-            <div class="row">
-                <input type="submit" class="btn" value="Annuler">
-            </div>
+{#            <div class="row">#}
+{#                <input type="submit" class="btn" value="Annuler">#}
+{#            </div>#}
         </div>
+        {{ form_end(sortieForm) }}
 
-    </form>
+
 </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

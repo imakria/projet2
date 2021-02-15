@@ -6,6 +6,7 @@ use App\Entity\Participant;
 use App\Entity\Sortie;
 use App\Form\SortieType;
 use App\Repository\ParticipantRepository;
+use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,16 +19,20 @@ class SortieController extends AbstractController
      * @Route("/", name="home")
      * @param ParticipantRepository $repository
      * @param Request $rq
+     * @param SortieRepository $sortieRepository
      * @return Response
      */
-    public function index(ParticipantRepository $repository, Request $rq): Response
+    public function index(ParticipantRepository $repository, Request $rq, SortieRepository $sortieRepository): Response
     {
 
         $participant = $this->getUser();
 
+        $sorties = $sortieRepository->findAll();
+
         return $this->render('sortie/index.html.twig', [
             'controller_name' => 'SortieController',
             'participant' => $participant,
+            'sorties' => $sorties,
         ]);
     }
 
@@ -57,9 +62,11 @@ class SortieController extends AbstractController
             $sortie->setVille($sortieForm->get('ville')->getData());
             $sortie->setLieu($sortieForm->get('lieu')->getData());
             $em->persist($sortie);
+            $em->flush();
+            return $this->redirectToRoute('home');
+
         }
 
-        $em->flush();
 
         return $this->render('sortie/addSortie.html.twig', [
             'controller_name' => 'SortieController',

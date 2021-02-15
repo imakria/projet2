@@ -66,19 +66,20 @@ class SortieType extends AbstractType
                 'label' => 'Lieu :',
                 'placeholder' => 'choisir une lieu',
                 'class' => Lieu::class,
-            ])
-            ->add('rue', TextType::class, [
-                'label' => 'Rue :'
-            ])
-            ->add('codePostal', TextType::class, [
-                'label' => 'CodePostal :'
-            ])
-            ->add('latitude', NumberType::class, [
-                'label' => 'Latitude :'
-            ])
-            ->add('longitude', NumberType::class, [
-                'label' => 'Longitude :'
             ]);
+//            ->add('rue', TextType::class, [
+//                'label' => 'Rue :',
+//                'required' => false
+//            ])
+//            ->add('codePostal', TextType::class, [
+//                'label' => 'CodePostal :'
+//            ])
+//            ->add('latitude', NumberType::class, [
+//                'label' => 'Latitude :'
+//            ])
+//            ->add('longitude', NumberType::class, [
+//                'label' => 'Longitude :'
+//            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

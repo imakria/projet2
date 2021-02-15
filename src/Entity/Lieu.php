@@ -24,7 +24,7 @@ class Lieu
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="rue")
+//     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="rue")
      */
     private $rue;
 

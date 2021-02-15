@@ -73,10 +73,10 @@ class Sortie
      */
     private $ville;
 
-    /**
-     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
-     */
-    private $rue;
+//    /**
+////    * @ORM\ManyToOne (targetEntity="App\Entity\Lieu", inversedBy="rue")
+//     */
+//    private $rue;
 
     /**
      * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="codePostal")
