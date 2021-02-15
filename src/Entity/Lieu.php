@@ -132,5 +132,9 @@ class Lieu
         $this->ville = $ville;
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
 
 }

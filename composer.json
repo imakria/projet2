@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
+        "easycorp/easyadmin-bundle": "^3.2",
         "fzaninotto/faker": "^1.9",
         "mercuryseries/flashy-bundle": "^3.0",
         "sensio/framework-extra-bundle": "^6.0",

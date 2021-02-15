@@ -27,6 +27,24 @@ class Etat
      */
     private $sorties;
 
+    /**
+     * @return mixed
+     */
+    public function getSorties()
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param mixed $sorties
+     */
+    public function setSorties($sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -42,5 +60,10 @@ class Etat
         $this->libelle = $libelle;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+     return $this->libelle;
     }
 }
