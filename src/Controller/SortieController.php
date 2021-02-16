@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Participant;
 use App\Entity\Sortie;
 use App\Form\SortieType;
@@ -28,6 +29,10 @@ class SortieController extends AbstractController
         $participant = $this->getUser();
 
         $sorties = $sortieRepository->findAll();
+
+        $data = new SearchData();
+
+
 
         return $this->render('sortie/index.html.twig', [
             'controller_name' => 'SortieController',
