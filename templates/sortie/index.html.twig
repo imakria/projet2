@@ -17,57 +17,77 @@
 
     <h2>Filtrer les sorties</h2>
     <section>
-        <form action="#">
+            {{ form_start(rechercheForm) }}
+
             <div class="flexBlocColumns">
                 <div class="column1">
                     <div class="row">
-                        <label for="campus">Campus</label>
-                        <input id="campus" type="select">
+                        {{ form_row(rechercheForm.campus)}}
+
+{#                        <label for="campus">Campus</label>#}
+{#                        <input id="campus" type="select">#}
                     </div>
 
                     <div class="row">
-                        <label for="tripName">Le nom de la sortie contient:</label>
-                        <input type="search" id="tripName" placeholder="search">
+                        {{ form_row(rechercheForm.nomContient)}}
+
+{#                        <label for="tripName">Le nom de la sortie contient:</label>#}
+{#                        <input type="search" id="tripName" placeholder="search">#}
                     </div>
 
                     <div id="fromTo" class="row">
                         <div>
-                            <label for="form">Entre</label>
-                            <input id="form" type="date">
+                            {{ form_row(rechercheForm.dateDebut)}}
+
+{#                            <label for="form">Entre</label>#}
+{#                            <input id="form" type="date">#}
                         </div>
                         <div>
-                            <label id="spaceTo" for="to">et</label>
-                            <input id="to" type="date">
+                            {{ form_row(rechercheForm.dateFin)}}
+
+{#                            <label id="spaceTo" for="to">et</label>#}
+{#                            <input id="to" type="date">#}
                         </div>
                     </div>
                 </div>
 
                 <div class="column2">
                     <div class="row">
-                        <input id="check1" type="checkbox">
-                        <label for="check1"> Sorties dont je suis l'organisateur/trice</label>
+                        {{ form_row(rechercheForm.organisateur)}}
+
+{#                        <input id="check1" type="checkbox">#}
+{#                        <label for="check1"> Sorties dont je suis l'organisateur/trice</label>#}
                     </div>
                     <div class="row">
-                        <input id="check2" type="checkbox">
-                        <label for="check2"> Sorties auxquelles je suis inscrit/e</label>
+                        {{ form_row(rechercheForm.inscrit)}}
+
+{#                        <input id="check2" type="checkbox">#}
+{#                        <label for="check2"> Sorties auxquelles je suis inscrit/e</label>#}
                     </div>
                     <div class="row">
-                        <input id="check3" type="checkbox">
-                        <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label>
+                        {{ form_row(rechercheForm.pasInscrit)}}
+
+{#                        <input id="check3" type="checkbox">#}
+{#                        <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label>#}
                     </div>
                     <div class="row">
-                        <input id="check4" type="checkbox">
-                        <label for="check4"> Sorties passées</label>
+                        {{ form_row(rechercheForm.sortiesPassees)}}
+
+{#                        <input id="check4" type="checkbox">#}
+{#                        <label for="check4"> Sorties passées</label>#}
                     </div>
                 </div>
 
                 <div class="submitBtn">
-                    <div class="row">
-                        <input type="submit" class="btn" value="Enregister">
-                    </div>
+                    {{ form_row(rechercheForm.submit)}}
+
+{#                    <div class="row">#}
+{#                        <input type="submit" class="btn" value="Enregister">#}
+{#                    </div>#}
                 </div>
             </div>
-        </form>
+            {{ form_end(rechercheForm) }}
+
     </section>
 
 
@@ -112,6 +132,9 @@
         <div class="row">
             <input type="submit" class="btn" value="Créer une sortie">
         </div>
+    </div>
+    <div class="js-filter-pagination">
+        {{ knp_pagination_render(sorties) }}
     </div>
 
 {% endblock %}

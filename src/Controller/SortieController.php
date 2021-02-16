@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Participant;
 use App\Entity\Sortie;
+use App\Form\SearchFormluraireType;
 use App\Form\SortieType;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,26 +20,44 @@ class SortieController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @param PaginatorInterface $paginator
      * @param ParticipantRepository $repository
      * @param Request $rq
      * @param SortieRepository $sortieRepository
      * @return Response
      */
-    public function index(ParticipantRepository $repository, Request $rq, SortieRepository $sortieRepository): Response
+    public function index(PaginatorInterface $paginator, ParticipantRepository $repository, Request $rq, SortieRepository $sortieRepository): Response
     {
 
         $participant = $this->getUser();
 
-        $sorties = $sortieRepository->findAll();
 
-        $data = new SearchData();
+        $datas = new SearchData();
 
+
+        $rechercheForm = $this->createForm(SearchFormluraireType::class, $datas);
+        $rechercheForm->handleRequest($rq);
+
+        $date = (new \DateTime('now'));
+        $id = $this->getUser()->getId();
+
+        dump($rechercheForm);
+        dump($datas);
+        dump($id);
+
+        $data = $sortieRepository->recherche($datas, $id, $date);
+        $dataFilter = $paginator->paginate(
+            $data,
+            $rq->query->getInt('page', 1),
+            5
+        );
 
 
         return $this->render('sortie/index.html.twig', [
             'controller_name' => 'SortieController',
             'participant' => $participant,
-            'sorties' => $sorties,
+            'sorties' => $dataFilter,
+            'rechercheForm' => $rechercheForm->createView()
         ]);
     }
 

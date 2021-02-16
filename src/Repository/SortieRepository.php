@@ -22,19 +22,48 @@ class SortieRepository extends ServiceEntityRepository
 
     public function recherche(SearchData $search, $id, $date)
     {
+
+//        dd($search);
         $qb = $this
             ->createQueryBuilder('s')
             ->addSelect('e')
-            ->join('e', 's.etat_id');
-        $qb->addSelect('c')
-            ->join('c', 's.campus_id');
+            ->Join('s.etat', 'e')
+            ->addSelect('c')
+            ->Join('s.campus', 'c');
 
-        if(!empty($search->getCampus())) {
-            $qb = $qb -> andWhere('c.nom = :campus')
-                ->setParameter('campus', "{$search->getCampus()}");
+        if(!empty($search->campus)) {
+
+            $qb = $qb -> andWhere('c.nom LIKE :campus')
+                ->setParameter('campus', '%' . $search->campus . "%");
         }
 
+        if(!empty($search->nomContient)) {
+            $qb = $qb -> andWhere('s.nom LIKE :nom')
+                ->setParameter('nom', '%' . $search->nomContient . "%");
+        }
+
+
+
+        return $qb;
+
     }
+
+
+    //    public function findSearch(SearchData $search)
+//    {
+//        $qb = $this
+//            ->createQueryBuilder('i')
+//            ->addSelect('c')
+//            ->join('i.category', 'c');
+//
+//        if (!empty($search->q)) {
+//            $qb = $qb
+//                ->andWhere('i.author LIKE :q')
+//                ->setParameter('q', '%' . $search->q . '%');
+//        }
+//
+//        return $qb;
+//    }
 
 
     // /**
@@ -55,21 +84,7 @@ class SortieRepository extends ServiceEntityRepository
     */
 
 
-//    public function findSearch(SearchData $search)
-//    {
-//        $qb = $this
-//            ->createQueryBuilder('i')
-//            ->addSelect('c')
-//            ->join('i.category', 'c');
-//
-//        if (!empty($search->q)) {
-//            $qb = $qb
-//                ->andWhere('i.author LIKE :q')
-//                ->setParameter('q', '%' . $search->q . '%');
-//        }
-//
-//        return $qb;
-//    }
+
 
     /*
     public function findOneBySomeField($value): ?Sortie
