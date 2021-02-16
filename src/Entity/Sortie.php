@@ -49,6 +49,7 @@ class Sortie
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties")
+     * @ORM\JoinColumn
      */
     private $etat;
 
@@ -72,26 +73,11 @@ class Sortie
      */
     private $ville;
 
-//    /**
-////    * @ORM\ManyToOne (targetEntity="App\Entity\Lieu", inversedBy="rue")
-//     */
-//    private $rue;
-
     /**
-     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="codePostal")
+     * @ORM\ManyToOne (targetEntity="App\Entity\Participant")
+     * @ORM\JoinColumn()
      */
-    private $codePostal;
-
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Lieu", inversedBy="latitude")
-     */
-    private $latitude;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Lieu", inversedBy="longitude")
-     */
-    private $longitude;
+    private $organisateur;
 
 
     public function getId(): ?int
@@ -171,12 +157,12 @@ class Sortie
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?Etat
     {
         return $this->etat;
     }
 
-    public function setEtat(?string $etat): self
+    public function setEtat(?Etat $etat): self
     {
         $this->etat = $etat;
 
@@ -327,6 +313,26 @@ class Sortie
         $this->longitude = $longitude;
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * @param mixed $organisateur
+     */
+    public function setOrganisateur($organisateur): void
+    {
+        $this->organisateur = $organisateur;
+    }
 
 
 

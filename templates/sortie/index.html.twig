@@ -118,8 +118,8 @@
                 <td>X</td>
                 <td>ilyes</td>
                 <td>
-                    <a href="">Afficher</a>
-                    <a href="">Modifier</a>
+                    <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
+                    <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
                 </td>
             </tr>
             {% endfor %}
@@ -130,7 +130,7 @@
 
     <div id="createTripBtn">
         <div class="row">
-            <input type="submit" class="btn" value="Créer une sortie">
+            <a href="{{ path('addSortie') }}"><button class="btn">Créer une sortie</button></a>
         </div>
     </div>
     <div class="js-filter-pagination">

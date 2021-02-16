@@ -122,17 +122,18 @@
         </div>
 
         <div class="btnSubmit">
-            <div class="row">
-                <input type="submit" class="btn" value="Enregister">
-            </div>
-
 {#            <div class="row">#}
-{#                <input type="submit" class="btn" value="Publier la sortie">#}
+{#                <input type="submit" class="btn" name="enregistrer" value="Enregister">#}
 {#            </div>#}
 
 {#            <div class="row">#}
-{#                <input type="submit" class="btn" value="Annuler">#}
+{#                <input type="submit" class="btn" name="publier" value="Publier la sortie">#}
 {#            </div>#}
+
+{#            <div class="row">#}
+{#                <input type="submit" class="btn" name="annuler" value="Annuler">#}
+{#            </div>#}
+            {{ form_row(sortieForm.supprimer, {'attr': {class:'hideBtn'}})}}
         </div>
         {{ form_end(sortieForm) }}
 

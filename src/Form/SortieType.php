@@ -13,6 +13,7 @@ use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -66,7 +67,7 @@ class SortieType extends AbstractType
                 'label' => 'Lieu :',
                 'placeholder' => 'choisir une lieu',
                 'class' => Lieu::class,
-            ]);
+            ])
 //            ->add('rue', TextType::class, [
 //                'label' => 'Rue :',
 //                'required' => false
@@ -80,6 +81,24 @@ class SortieType extends AbstractType
 //            ->add('longitude', NumberType::class, [
 //                'label' => 'Longitude :'
 //            ]);
+            ->add('enregistrer', SubmitType::class, [
+            'label' => 'Enregistrer',
+                "attr"=>["value"=>"enregistrer"]
+            ])
+            ->add('publier', SubmitType::class, [
+                'label' => 'Publier',
+                "attr"=>["value"=>"publier"]
+            ])
+            ->add('annuler', SubmitType::class, [
+                'label' => 'Annuler',
+                "attr"=>["value"=>"annuler"]
+            ])
+            ->add('supprimer', SubmitType::class, [
+                'label' => 'Supprimer',
+                "attr"=>["value"=>"supprimer"]
+            ])
+
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Data\SearchData;
+use App\Entity\Etat;
 use App\Entity\Participant;
 use App\Entity\Sortie;
 use App\Form\SearchFormluraireType;
 use App\Form\SortieType;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
+use ContainerEfB3UxC\getSortieControllerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -72,11 +74,12 @@ class SortieController extends AbstractController
     {
         $sortie = new Sortie();
         $sortieForm = $this->createForm(SortieType::class, $sortie);
-        $participantConnected = $this->getUser();
+        $organisateur = $this->getUser();
 
         $sortieForm->handleRequest($rq);
 
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
+            $sortie->setOrganisateur($organisateur);
             $sortie->setNom($sortieForm->get('nom')->getData());
             $sortie->setDateHeureDebut($sortieForm->get('dateHeureDebut')->getData());
             $sortie->setDuree($sortieForm->get('duree')->getData());
@@ -86,6 +89,18 @@ class SortieController extends AbstractController
             $sortie->setCampus($sortieForm->get('campus')->getData());
             $sortie->setVille($sortieForm->get('ville')->getData());
             $sortie->setLieu($sortieForm->get('lieu')->getData());
+
+            if ($sortieForm->get('enregistrer')->isClicked()) {
+                $sortie->setEtat($em->find(Etat::class, 92));
+//                dd($sortie);
+            }
+            elseif ($sortieForm->get('publier')->isClicked()) {
+                $sortie->setEtat($em->find(Etat::class, 93));
+            }
+            else {
+                return $this->redirectToRoute('home');
+            }
+
             $em->persist($sortie);
             $em->flush();
             return $this->redirectToRoute('home');
@@ -95,10 +110,56 @@ class SortieController extends AbstractController
 
         return $this->render('sortie/addSortie.html.twig', [
             'controller_name' => 'SortieController',
-            'participant' => $participantConnected,
+            'participant' => $organisateur,
             'sortieForm' => $sortieForm->createView(),
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param SortieRepository $sortieRepository
+     * @Route("/showSortie/{id}", name="showSortie")
+     */
+    public function showSortie (Request $request, SortieRepository $sortieRepository) {
+        $id = $request->get('id');
+        $sortie = new Sortie();
+        $sortie = $sortieRepository->find($id);
+
+
+
+        $sortieForm = $this->createForm(SortieType::class, $sortie);
+        $sortieForm->handleRequest($request);
+
+
+        return $this->render('sortie/showSortie.html.twig', [
+            'sortie' => $sortie,
+            'sortieForm' => $sortieForm->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param SortieRepository $sortieRepository
+     * @Route("/modifySortie/{id}", name="modifySortie")
+     */
+    public function modifySortie (Request $request, SortieRepository $sortieRepository) {
+        $id = $request->get('id');
+        $sortie = new Sortie();
+        $sortie = $sortieRepository->find($id);
+
+
+
+        $sortieForm = $this->createForm(SortieType::class, $sortie);
+        $sortieForm->handleRequest($request);
+
+
+        return $this->render('sortie/modifySortie.html.twig', [
+            'sortie' => $sortie,
+            'sortieForm' => $sortieForm->createView(),
+        ]);
+    }
+
+
 
 
 }

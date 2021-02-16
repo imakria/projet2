@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="jquery.datetimepicker.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('./build/app.css') }}">
+{% endblock %}
+{% block javascripts %}
+
+
+
+{% endblock %}
+
+{% block title %}Modifier une Sortie!{% endblock %}
+
+
+
+{% block body %}
+
+    <h2>Modifier une sortie</h2>
+    <section class=formSectionAddSortie>
+        {{ form_start(sortieForm) }}
+
+
+
+        <div class="flexBlockColumns">
+            <div class="flexColumn1">
+                <div class="row">
+                    {{ form_row(sortieForm.nom)}}
+                    {#                    <label for="tripName">Nom de la sortie: </label>#}
+                    {#                    <input type="text" id="tripName" name="tripName">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.dateHeureDebut)}}
+
+                    {#                    <label for="dateTimeTrip">Date et heure de la sortie :</label>#}
+                    {#                    <input type="datetime-local" id="dateTimeTrip" name="dateTimeTrip">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.dateLimiteInscription)}}
+
+                    {#                    <label for="limitDateInscription">Date limite d'inscription :</label>#}
+                    {#                    <input type="date" id="limitDateInscription" name="limitDateInscription">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.nbInscriptionMax)}}
+
+                    {#                    <label for="nbOfPlaces">Nombre de places :</label>#}
+                    {#                    <input type="number" id="nbOfPlaces" name="nbOfPlaces">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.duree)}}
+
+                    {#                    <label for="duration">Durée :</label>#}
+                    {#                    <input type="number" id="duration" name="duration">#}
+                    <span id="minutes">minutes</span>
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.infosSortie)}}
+
+                    {#                    <label for="description">Description et informations :</label>#}
+                    {#                    <textarea id="description" name="description"></textarea>#}
+                </div>
+            </div>
+
+            <div class="flexColumn2">
+
+                <div class="row">
+                    {{ form_row(sortieForm.campus)}}
+
+                    {#                    <label for="campus">Campus :</label>#}
+                    {#                    <input type="text" id="campus" name="campus">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.ville) }}
+
+                    {#                    <label for="city">Ville :</label>#}
+                    {#                    <input type="select" id="city" name="city">#}
+                </div>
+
+                <div class="row">
+                    {{ form_row(sortieForm.lieu)}}
+
+                    {#                    <label for="location">Lieu :</label>#}
+                    {#                    <input type="select" id="location" name="location">#}
+                </div>
+
+                <div class="row">
+                    {#                    {{ form_row(sortieForm.rue)}}#}
+
+                    {#                    <label for="road"> Rue :</label>#}
+                    {#                    <input type="text" id="road" name="road">#}
+                </div>
+
+                <div class="row">
+                    {#                    {{ form_row(sortieForm.codePostal)}}#}
+
+                    {#                    <label for="postCode">Code postal :</label>#}
+                    {#                    <input type="text" id="postCode" name="postCode">#}
+                </div>
+
+
+                <div class="row">
+                    {#                    {{ form_row(sortieForm.latitude)}}#}
+
+                    {#                    <label for="latitude">Latitude :</label>#}
+                    {#                    <input type="text" id="latitude" name="latitude">#}
+                </div>
+
+                <div class="row">
+                    {#                    {{ form_row(sortieForm.longitude)}}#}
+
+                    {#                    <label for="longitude">Longitude :</label>#}
+                    {#                    <input type="text" id="longitude" name="longitude">#}
+                </div>
+            </div>
+        </div>
+
+        {{ form_end(sortieForm) }}
+
+
+    </section>
+    <h3>Liste des participants inscrits:</h3>
+
+    <section class="tableBox">
+        <table>
+            <thead>
+            <tr id="headColor">
+                <th>Pseudo</th>
+                <th>Nom</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            <tr>
+                <td>Philo</td>
+                <td>Philo</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="jquery.datetimepicker.full.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+{% endblock %}

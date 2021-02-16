@@ -34,12 +34,18 @@ class SortieRepository extends ServiceEntityRepository
         if(!empty($search->campus)) {
 
             $qb = $qb -> andWhere('c.nom LIKE :campus')
-                ->setParameter('campus', '%' . $search->campus . "%");
+                ->setParameter('campus', '%' . $search->getCampus() . "%");
         }
 
         if(!empty($search->nomContient)) {
             $qb = $qb -> andWhere('s.nom LIKE :nom')
                 ->setParameter('nom', '%' . $search->nomContient . "%");
+        }
+
+        if(!empty($search->getDateDebut() && !empty($search->getDateFin()))) {
+            $qb = $qb ->andWhere('s.dateHeureDebut BETWEEN :dateDebut AND :dateFin ')
+                ->setParameter('dateDebut', $search->getDateDebut())
+                ->setParameter('dateFin', $search->getDateFin());
         }
 
 

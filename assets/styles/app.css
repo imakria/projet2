@@ -250,4 +250,7 @@ h2 {
       width: 100%;
       text-align: center; } }
 
+.hideBtn {
+  display: none; }
+
 /*# sourceMappingURL=app.css.map */
