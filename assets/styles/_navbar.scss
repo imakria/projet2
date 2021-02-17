@@ -1,13 +1,89 @@
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  a{
-    margin-right: 15px;
+  nav {
+    //height: 60px;
+    //width: 100%;
+    //margin-top: 0px;
+    //background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    //position: fixed;
+    //top: 0;
+    //z-index: 100;
+
+    .logoSite {
+      height: 50px;
+      margin-left: 30px;
+    }
+
+    .contItems {
+      font-size: 18px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .items {
+        margin-right: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+      }
+
+      .items:hover {
+        color: #5f5f5f;
+      }
+
+      .logoMenuImg {
+        width: 30px;
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 13px;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      /* on fait apparaitre le logo */
+      .logoMenuImg {
+        display: block;
+      }
+
+      /* pour ne plus display flex les éléments */
+      nav {
+        display: block;
+      }
+
+      /* Pour espacer, fait à la fin */
+      .items:nth-child(1) {
+        padding-top: 20px;
+      }
+
+      .items {
+        background: #f5f5f5;
+        /* background: green; */
+        /* pour la marge plus haut */
+        margin-right: 0;
+        padding: 10px 20px;
+        display: block;
+      }
+
+      .contItems {
+        display: none;
+        border-top: 1px solid black;
+        /* background: green; */
+      }
+
+      /* Classe à toggle */
+      .responsive {
+        display: block;
+        /*margin-top: 50px;*/
+      }
+
+      .logoSite {
+        margin-top: 4px;
+      }
+    }
   }
 
-  img {
-    width: 160px;
-  }
-}
+

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ParticipantRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -189,11 +190,23 @@ class Participant implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return Collection|Sortie[]
      */
-    public function getSorties()
+    public function getSorties(): Collection
     {
         return $this->sorties;
+    }
+
+    public function addSortie(Sortie $sortie) {
+        if(!$this->sorties->contains($sortie)) {
+            $this->sorties->add($sortie);
+        }
+        return $this;
+    }
+
+    public function deleteSortie(Sortie $sortie) {
+        $this->sorties->removeElement($sortie);
+        return $this;
     }
 
     /**
@@ -271,9 +284,11 @@ class Participant implements UserInterface
         $this->picture = $picture;
     }
 
-//    public function __toString(): string{
-//        return $this->pseudo;
-//    }
+    public function __toString(): string{
+        return $this->pseudo;
+    }
+
+
 
 
 }

@@ -13,7 +13,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+{#            {{ encore_entry_script_tags('app') }}#}
             <!-- Flashy depends on jQuery -->
 
 
@@ -24,12 +24,9 @@
     {% block navbar %} {% include 'inc/navbar.html.twig'%}{% endblock %}
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Load Flashy default JavaScript -->
-    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-    <!-- Include Flashy default partial -->
-    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+    <script src="{{ asset('./build/app.js') }}"></script>
 
-    <script src="{{ asset('build/app.js') }}"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+
     </body>
 </html>

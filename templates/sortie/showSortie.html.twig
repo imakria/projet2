@@ -141,24 +141,13 @@
                 <th>Nom</th>
             </tr>
             </thead>
-
             <tbody>
-            <tr>
-                <td>Philo</td>
-                <td>Philo</td>
-            </tr>
-            <tr>
-                <td>Philo</td>
-                <td>Philo</td>
-            </tr>
-            <tr>
-                <td>Philo</td>
-                <td>Philo</td>
-            </tr>
-            <tr>
-                <td>Philo</td>
-                <td>Philo</td>
-            </tr>
+            {% for participant in sortie.participants %}
+                <tr>
+                    <td>{{ participant.pseudo }} </td>
+                    <td> {{ participant.nom }}</td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </section>

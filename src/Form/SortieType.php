@@ -10,6 +10,7 @@ use Doctrine\DBAL\Types\FloatType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -26,47 +27,64 @@ class SortieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom de la sortie :'
+                'label' => 'Nom de la sortie :',
+                'required' => false
             ])
             ->add('dateHeureDebut', DateTimeType::class, [
                 'label' => 'Date et heure de la sortie :',
                 'html5' => true,
                 'attr' => ['class' => 'js-datepicker'],
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false
+
             ])
             ->add('duree', TimeType::class, [
                 'label' => 'Duree :',
                 'html5' => true,
                 'attr' => ['class' => 'js-datepicker'],
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false
+
             ])
             ->add('dateLimiteInscription', DateType::class, [
                 'label' => 'Date limite d\'inscription :',
                 'html5' => true,
                 'attr' => ['class' => 'js-datepicker'],
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false
+
             ])
             ->add('nbInscriptionMax', NumberType::class, [
-                'label' => 'Nombre de places :'
+                'label' => 'Nombre de places :',
+                'required' => false
+
             ])
             ->add('infosSortie', TextareaType::class, [
-                'label' => 'Description et Information :'
+                'label' => 'Description et Information:',
+                'required' => false
+
             ])
             ->add('campus', EntityType::class, [
                 'label' => 'Campus :',
                 'placeholder' => 'choisir un campus',
                 'class' => Campus::class,
+                'required' => false
+
             ])
             ->add('ville', EntityType::class, [
                 'label' => 'Ville :',
                 'placeholder' => 'choisir une ville',
                 'class' => Ville::class,
+                'required' => false
+
 //                'attr' => ['class' => 'test']
             ])
             ->add('lieu', EntityType::class, [
                 'label' => 'Lieu :',
                 'placeholder' => 'choisir une lieu',
                 'class' => Lieu::class,
+                'required' => false
+
             ])
 //            ->add('rue', TextType::class, [
 //                'label' => 'Rue :',
@@ -89,7 +107,7 @@ class SortieType extends AbstractType
                 'label' => 'Publier',
                 "attr"=>["value"=>"publier"]
             ])
-            ->add('annuler', SubmitType::class, [
+            ->add('annuler', ButtonType::class, [
                 'label' => 'Annuler',
                 "attr"=>["value"=>"annuler"]
             ])

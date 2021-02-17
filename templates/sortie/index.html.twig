@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello SortieController!{% endblock %}
+        {% block javascripts %}
+            {# {{ encore_entry_script_tags('app') }} #}
+            <!-- Flashy depends on jQuery -->
 
+
+
+        {% endblock %}
 
 
 {% block body %}
@@ -12,81 +18,81 @@
             Bonjour {{ message }}
         </div>
     {% endfor %}
-{{ participant.id }}
+    {{ participant.id }}
 
 
     <h2>Filtrer les sorties</h2>
     <section>
-            {{ form_start(rechercheForm) }}
+        {{ form_start(rechercheForm) }}
 
-            <div class="flexBlocColumns">
-                <div class="column1">
-                    <div class="row">
-                        {{ form_row(rechercheForm.campus)}}
+        <div class="flexBlocColumns">
+            <div class="column1">
+                <div class="row">
+                    {{ form_row(rechercheForm.campus) }}
 
-{#                        <label for="campus">Campus</label>#}
-{#                        <input id="campus" type="select">#}
-                    </div>
-
-                    <div class="row">
-                        {{ form_row(rechercheForm.nomContient)}}
-
-{#                        <label for="tripName">Le nom de la sortie contient:</label>#}
-{#                        <input type="search" id="tripName" placeholder="search">#}
-                    </div>
-
-                    <div id="fromTo" class="row">
-                        <div>
-                            {{ form_row(rechercheForm.dateDebut)}}
-
-{#                            <label for="form">Entre</label>#}
-{#                            <input id="form" type="date">#}
-                        </div>
-                        <div>
-                            {{ form_row(rechercheForm.dateFin)}}
-
-{#                            <label id="spaceTo" for="to">et</label>#}
-{#                            <input id="to" type="date">#}
-                        </div>
-                    </div>
+                    {# <label for="campus">Campus</label> #}
+                    {# <input id="campus" type="select"> #}
                 </div>
 
-                <div class="column2">
-                    <div class="row">
-                        {{ form_row(rechercheForm.organisateur)}}
+                <div class="row">
+                    {{ form_row(rechercheForm.nomContient) }}
 
-{#                        <input id="check1" type="checkbox">#}
-{#                        <label for="check1"> Sorties dont je suis l'organisateur/trice</label>#}
-                    </div>
-                    <div class="row">
-                        {{ form_row(rechercheForm.inscrit)}}
-
-{#                        <input id="check2" type="checkbox">#}
-{#                        <label for="check2"> Sorties auxquelles je suis inscrit/e</label>#}
-                    </div>
-                    <div class="row">
-                        {{ form_row(rechercheForm.pasInscrit)}}
-
-{#                        <input id="check3" type="checkbox">#}
-{#                        <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label>#}
-                    </div>
-                    <div class="row">
-                        {{ form_row(rechercheForm.sortiesPassees)}}
-
-{#                        <input id="check4" type="checkbox">#}
-{#                        <label for="check4"> Sorties passées</label>#}
-                    </div>
+                    {# <label for="tripName">Le nom de la sortie contient:</label> #}
+                    {# <input type="search" id="tripName" placeholder="search"> #}
                 </div>
 
-                <div class="submitBtn">
-                    {{ form_row(rechercheForm.submit)}}
+                <div id="fromTo" class="row">
+                    <div>
+                        {{ form_row(rechercheForm.dateDebut) }}
 
-{#                    <div class="row">#}
-{#                        <input type="submit" class="btn" value="Enregister">#}
-{#                    </div>#}
+                        {# <label for="form">Entre</label> #}
+                        {# <input id="form" type="date"> #}
+                    </div>
+                    <div>
+                        {{ form_row(rechercheForm.dateFin) }}
+
+                        {# <label id="spaceTo" for="to">et</label> #}
+                        {# <input id="to" type="date"> #}
+                    </div>
                 </div>
             </div>
-            {{ form_end(rechercheForm) }}
+
+            <div class="column2">
+                <div class="row">
+                    {{ form_row(rechercheForm.organisateur) }}
+
+                    {# <input id="check1" type="checkbox"> #}
+                    {# <label for="check1"> Sorties dont je suis l'organisateur/trice</label> #}
+                </div>
+                <div class="row">
+                    {{ form_row(rechercheForm.inscrit) }}
+
+                    {# <input id="check2" type="checkbox"> #}
+                    {# <label for="check2"> Sorties auxquelles je suis inscrit/e</label> #}
+                </div>
+                <div class="row">
+                    {{ form_row(rechercheForm.pasInscrit) }}
+
+                    {# <input id="check3" type="checkbox"> #}
+                    {# <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label> #}
+                </div>
+                <div class="row">
+                    {{ form_row(rechercheForm.sortiesPassees) }}
+
+                    {# <input id="check4" type="checkbox"> #}
+                    {# <label for="check4"> Sorties passées</label> #}
+                </div>
+            </div>
+
+            <div class="submitBtn">
+                {{ form_row(rechercheForm.submit) }}
+
+                {# <div class="row"> #}
+                {# <input type="submit" class="btn" value="Enregister"> #}
+                {# </div> #}
+            </div>
+        </div>
+        {{ form_end(rechercheForm) }}
 
     </section>
 
@@ -108,20 +114,38 @@
             </thead>
 
             <tbody>
+            {# Change le la route de redirection if inscrit or desister #}
+            {% set route = '' %}
+            {# Change le titre dans la colonne action #}
             {% for sortie in sorties %}
-            <tr>
-                <td>{{ sortie.nom }}</td>
-                <td>{{ sortie.dateHeureDebut | date("d/m/Y")  }}</td>
-                <td>{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
-                <td>nombre dynamique /{{ sortie.nbInscriptionMax }}</td>
-                <td>{{ sortie.etat }}</td>
-                <td>X</td>
-                <td>ilyes</td>
-                <td>
-                    <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
-                    <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
-                </td>
-            </tr>
+                {% set inscrit = false %}
+                {% for participant in sortie.participants %}
+                    {% if participant.id == app.token.user.id %}
+                        {% set inscrit = true %}
+                    {% endif %}
+                {% endfor %}
+                {% if inscrit %}
+                    {% set titreInscrit = "Se désister" %}
+                    {% set route = "desister"%}
+                {% else %}
+                    {% set titreInscrit = "S'inscrire" %}
+                    {% set route = "inscription"%}
+
+                {% endif %}
+                <tr>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.dateHeureDebut | date("d/m/Y H:i") }}</td>
+                    <td>{{ sortie.dateLimiteInscription | date("d/m/Y H:i") }}</td>
+                    <td>{{ sortie.participants | length }} /{{ sortie.nbInscriptionMax }}</td>
+                    <td>{{ sortie.etat }}</td>
+                    <td>{{ inscrit ? 'X' : '' }}</td>
+                    <td>{{ sortie.organisateur }}</td>
+                    <td>
+                        <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
+                        <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
+                        <a href="{{ path(''~route~'', { 'id': sortie.id }) }}">{{ titreInscrit }}</a>
+                    </td>
+                </tr>
             {% endfor %}
 
             </tbody>
@@ -130,11 +154,12 @@
 
     <div id="createTripBtn">
         <div class="row">
-            <a href="{{ path('addSortie') }}"><button class="btn">Créer une sortie</button></a>
+            <a href="{{ path('addSortie') }}">
+                <button type="submit" class="btn">Créer une sortie</button>
+            </a>
         </div>
     </div>
     <div class="js-filter-pagination">
         {{ knp_pagination_render(sorties) }}
     </div>
-
 {% endblock %}

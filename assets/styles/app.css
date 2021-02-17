@@ -1,256 +1,74 @@
-body {
-  background: #ffffff; }
+/*
+Error: wrong number of arguments (given 4, expected 1..3) for `rgb'
+        on line 177 of _home.scss
+        from line 2 of app.scss
 
-.messageErreur {
-  background: #fad2d3;
-  color: #af2323;
-  border-color: #fbc2c4;
-  border-radius: 14px;
-  font-size: 18px;
-  padding: 15px;
-  margin-top: 20px;
-  -webkit-box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24);
-  box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24); }
-
-.messageSuccess {
-  background: #d9e8d7;
-  color: #265b1f;
-  border-color: #d9e8d7;
-  border-radius: 14px;
-  font-size: 18px;
-  padding: 15px;
-  margin-top: 20px;
-  -webkit-box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24);
-  box-shadow: -4px -3px 28px -8px rgba(0, 0, 0, 0.24); }
-
-*, ::before, ::after {
-  box-sizing: border-box; }
-
-body {
-  margin: 0 auto;
-  padding: 0;
-  width: 80%; }
-
-section {
-  width: 100%; }
-
-form {
-  width: 100%; }
-
-h2 {
-  width: 80%; }
-
-.flexBlocColumns {
-  display: flex;
-  justify-content: center; }
-  .flexBlocColumns .column2 {
-    margin-left: 20px; }
-  .flexBlocColumns #fromTo {
-    display: flex; }
-  .flexBlocColumns #spaceTo {
-    padding: 0 5px; }
-
-.submitBtn {
-  align-self: center;
-  margin-left: 20px; }
-
-.btn {
-  padding: 20px;
-  margin: 0px; }
-
-input {
-  /*background-color: green*/
-  margin-bottom: 10px; }
-
-/*--------------------------------*/
-.tableBox {
-  overflow-y: scroll;
-  width: 100%;
-  height: 200px;
-  margin-top: 20px; }
-  .tableBox th, .tableBox td {
-    padding: 10px; }
-  .tableBox table {
-    margin: 0px auto 0px auto;
-    table-layout: auto;
-    width: 100%; }
-  .tableBox th {
-    position: sticky;
-    top: 0;
-    background-color: #d3d1d1;
-    color: black; }
-  .tableBox #headColor {
-    background-color: #d3d1d1; }
-
-table, td, th {
-  border: 1px solid black;
-  border-collapse: collapse;
-  text-align: left; }
-
-tr:nth-child(odd) {
-  background-color: #e8e8e8; }
-
-#createTripBtn {
-  /*	background-color: pink;
-  */
-  width: 100%; }
-  #createTripBtn .row {
-    /*	background-color: red;
-    */
-    margin-top: 20px;
-    display: flex;
-    justify-content: center; }
-
-/*--------------------------------*/
-@media screen and (max-width: 1000px) {
-  form {
-    width: 100%; }
-
-  .flexBlocColumns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; }
-
-  .column1, .column2 {
-    margin-bottom: 20px; }
-
-  .submitBtn {
-    margin: 0; } }
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-  .topnav a {
-    margin-right: 15px; }
-  .topnav img {
-    width: 160px; }
-
-*, ::before, ::after {
-  box-sizing: border-box; }
-
-body {
-  padding: 0; }
-
-h2 {
-  text-align: center;
-  width: 100%; }
-
-.formSectionMyProfil {
-  width: 100%;
-  justify-content: center; }
-  .formSectionMyProfil .flexBlockColumnsMyProfil {
-    justify-content: space-around;
-    display: flex; }
-    .formSectionMyProfil .flexBlockColumnsMyProfil .flexColumn1 .myprofilImage {
-      width: 300px;
-      border-radius: 50%; }
-    .formSectionMyProfil .flexBlockColumnsMyProfil .flexColumn2 .row {
-      margin-bottom: 10px; }
-    .formSectionMyProfil .flexBlockColumnsMyProfil .flexColumn2 .form-group {
-      display: flex; }
-      .formSectionMyProfil .flexBlockColumnsMyProfil .flexColumn2 .form-group label {
-        /*background-color: green;*/
-        width: 200px; }
-      .formSectionMyProfil .flexBlockColumnsMyProfil .flexColumn2 .form-group input {
-        display: flex;
-        flex-grow: 1;
-        border: solid 1px #ccc; }
-
-#minutes {
-  padding-left: 10px; }
-
-.btnSubmit {
-  /*background-color: gray;*/
-  width: 100%;
-  margin: 30px auto 0 auto;
-  display: flex;
-  justify-content: center; }
-
-.btn {
-  /*background-color: blue;*/
-  width: 100%;
-  margin: 20px 20px;
-  padding: 15px;
-  text-align: center; }
-
-/*----------------------------------------------------*/
-@media screen and (max-width: 850px) {
-  .flexBlockColumns {
-    display: block; }
-
-  .flexColumn1, .flexColumn2 {
-    width: 100%; }
-
-  .btnSubmit {
-    display: block;
-    width: 50%; }
-
-  .btn {
-    margin-top: 0px;
-    width: 100%;
-    text-align: center; } }
-.formSectionAddSortie {
-  /*background-color: red;*/
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /*----------------------------------------------------*/ }
-  .formSectionAddSortie *, .formSectionAddSortie ::before, .formSectionAddSortie ::after {
-    box-sizing: border-box; }
-  .formSectionAddSortie body {
-    margin: 0;
-    padding: 0; }
-  .formSectionAddSortie h2 {
-    text-align: center; }
-  .formSectionAddSortie .flexBlockColumns {
-    display: flex;
-    justify-content: space-between; }
-    .formSectionAddSortie .flexBlockColumns .flexColumn1, .formSectionAddSortie .flexBlockColumns .flexColumn2 {
-      width: 45%; }
-    .formSectionAddSortie .flexBlockColumns .row {
-      display: flex;
-      margin-bottom: 10px; }
-      .formSectionAddSortie .flexBlockColumns .row #minutes {
-        padding-left: 10px; }
-      .formSectionAddSortie .flexBlockColumns .row label {
-        /*background-color: green;*/
-        width: 200px; }
-      .formSectionAddSortie .flexBlockColumns .row input {
-        /*	background-color: blue;
-        */
-        display: flex;
-        flex-grow: 1;
-        border: solid 1px #ccc; }
-  .formSectionAddSortie .btnSubmit {
-    /*background-color: gray;*/
-    width: 100%;
-    margin: 30px auto 0 auto;
-    display: flex;
-    justify-content: center; }
-    .formSectionAddSortie .btnSubmit .btn {
-      /*background-color: blue;*/
-      width: 100%;
-      margin: 20px 20px;
-      padding: 15px;
-      text-align: center; }
-  @media screen and (max-width: 850px) {
-    .formSectionAddSortie .flexBlockColumns {
-      display: block;
-      margin: 0 auto; }
-    .formSectionAddSortie .flexColumn1, .formSectionAddSortie .flexColumn2 {
-      width: 100%; }
-    .formSectionAddSortie .btnSubmit {
-      display: block;
-      width: 50%; }
-    .formSectionAddSortie .btn {
-      margin-top: 0px;
-      width: 100%;
-      text-align: center; } }
-
-.hideBtn {
-  display: none; }
-
-/*# sourceMappingURL=app.css.map */
+Backtrace:
+_home.scss:177
+app.scss:2
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:311:in `reformat_argument_error'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:158:in `rescue in _perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:127:in `_perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `block in _perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `map'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/list_literal.rb:75:in `_perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+C:/Ruby27-x64/lib/ruby/gems/2.7.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+C:/Ruby27-x64/bin/sass:23:in `load'
+C:/Ruby27-x64/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: wrong number of arguments (given 4, expected 1..3) for `rgb'\A         on line 177 of _home.scss\A         from line 2 of app.scss"; }

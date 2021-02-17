@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SortieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Collection;
 
 /**
  * @ORM\Entity(repositoryClass=SortieRepository::class)
@@ -202,9 +203,9 @@ class Sortie
     }
 
     /**
-     * @return mixed
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getParticipants()
+    public function getParticipants(): \Doctrine\Common\Collections\Collection
     {
         return $this->participants;
     }
@@ -216,6 +217,23 @@ class Sortie
     {
         $this->participants = $participants;
     }
+
+    public function addParticipant(Participant $participant)
+    {
+        if(!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->addSortie($this);
+        }
+        return $this;
+    }
+
+public function deleteParticipant(Participant $participant)
+{
+    if ($this->participants->removeElement($participant)) {
+        $participant->deleteSortie($this);
+    }
+}
+
 
     /**
      * @return mixed

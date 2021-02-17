@@ -1,15 +1,18 @@
-<div class="topnav">
+<nav class="".topnav>
     <div class="logo">
-        <a href="{{ path('home') }}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
+        <a href="{{ path('home') }}"><img class="logoSite" src="{{ asset('img/logo.png') }}" alt=""></a>
     </div>
-    <div class="tabs">
-        <a href="{{ path('home') }}">Accueil</a>
-        <a href="">Villes</a>
-        <a href="">Campus</a>
+    <div class="contItems">
+        <a class="items" href="{{ path('home') }}">Accueil</a>
+        <a class="items" href="">Villes</a>
+        <a class="items" href="">Campus</a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('myProfile')}}">Mon profil</a>
-        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a class="items" href="{{ path('myProfile')}}">Mon profil</a>
+            <a class="items" href="{{ path('app_logout') }}">Se déconnecter</a>
         {% endif %}
-    </div>
+        <!-- Logo menu -->
+        <img src=" {{ asset('img/menu.svg') }}" alt="logo menu" class="logoMenuImg">
 
-</div>
+    </div>
+</nav>
+
