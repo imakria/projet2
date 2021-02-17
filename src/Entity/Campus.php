@@ -20,7 +20,6 @@ class Campus
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Blank
      */
     private $nom;
 
