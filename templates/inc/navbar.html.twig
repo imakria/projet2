@@ -4,7 +4,7 @@
     </div>
     <div class="contItems">
         <a class="items" href="{{ path('home') }}">Accueil</a>
-        <a class="items" href="">Villes</a>
+        <a class="items" href="{{ path('ville') }}">Villes</a>
         <a class="items" href="">Campus</a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="items" href="{{ path('myProfile')}}">Mon profil</a>
