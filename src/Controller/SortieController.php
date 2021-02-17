@@ -44,10 +44,6 @@ class SortieController extends AbstractController
         $date = (new \DateTime('now'));
         $id = $this->getUser()->getId();
 
-        dump($rechercheForm);
-        dump($datas);
-        dump($id);
-
         $data = $sortieRepository->recherche($datas, $id, $date);
         $dataFilter = $paginator->paginate(
             $data,

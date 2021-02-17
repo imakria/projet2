@@ -69,10 +69,10 @@ class Sortie
      */
     private $participants;
 
-    /**
-     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
-     */
-    private $ville;
+//    /**
+//     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
+//     */
+//    private $ville;
 
     /**
      * @ORM\ManyToOne (targetEntity="App\Entity\Participant")

@@ -44,26 +44,23 @@
 			</thead>
 
 			<tbody>
+			{% for ville in villes %}
 				<tr>
-					<td>Philo</td>
-					<td>Philo</td>
-					<td>Philo</td>
+					<td>{{ ville.nom }}</td>
+					<td>{{ ville.codePostal }}</td>
+					<td>
+					<a href="{{ path('modifyCity', {'id': ville.id}) }}"><button>Modifier</button></a>
+					<a href="{{ path('deleteCity', {'id': ville.id}) }}"><button>Supprimer</button></a>
+					</td>
 				</tr>
-				<tr>
-					<td>Philo</td>
-					<td>Philo</td>
-					<td>Philo</td>
-				</tr>
-				<tr>
-					<td>Philo</td>
-					<td>Philo</td>
-					<td>Philo</td>
-				</tr>
-				<tr>
-					<td>Philo</td>
-					<td>Philo</td>
-					<td>Philo</td>
-				</tr>
+			{% endfor %}
+			<tr>
+			{{ form_start(villeForm) }}
+			<td>{{ form_row(villeForm.nom) }}</td>
+			<td>{{ form_row(villeForm.codePostal) }}</td>
+			<td>{{ form_row(villeForm.add) }}</td>
+			{{ form_end(villeForm) }}
+</tr>
 			</tbody>
 		</table>
 	</section>

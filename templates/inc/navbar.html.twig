@@ -5,7 +5,7 @@
     <div class="contItems">
         <a class="items" href="{{ path('home') }}">Accueil</a>
         <a class="items" href="{{ path('ville') }}">Villes</a>
-        <a class="items" href="">Campus</a>
+        <a class="items" href="{{ path('campus') }}">Campus</a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="items" href="{{ path('myProfile')}}">Mon profil</a>
             <a class="items" href="{{ path('app_logout') }}">Se déconnecter</a>
