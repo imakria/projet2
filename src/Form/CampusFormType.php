@@ -15,12 +15,14 @@ class CampusFormType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => ' '
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Campus',
+                ]
             ])
             ->add('add', SubmitType::class, [
                 "attr" => ["value" => "ajouter"]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

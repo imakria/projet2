@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="jquery.datetimepicker.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('./build/app.css') }}">
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+
+{% block title %}Afficher un Participant!{% endblock %}
+{% block body %}
+<section class="participantProfilSection">
+    <h3 class="pseudoParticipant">{{ participant.pseudo }}</h3>
+    {% if participant.picture %}
+        <img class="profilImage" src="{{ asset('uploads/'~ participant.picture) }}" alt="">
+    {% endif %}
+    <div class="nomParticipantDiv">
+        {{ participant.nom }}  {{ participant.prenom }}
+    </div>
+    <div class="nomCampusDiv">
+        {% if participant.campus %}
+           Campus : {{ participant.campus }}
+        {% endif %}
+    </div>
+    <a href="{{ path('home') }}"><button class="btn btnCancelSortie">Retour</button></a>
+</section>
+
+
+{% endblock %}

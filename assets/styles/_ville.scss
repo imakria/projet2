@@ -1,0 +1,65 @@
+body {
+  background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
+  background-attachment: fixed;
+  .about-content{
+    h2, h3 {
+      color: white;
+    }
+  .flexbox-container {
+    .row {
+      label {
+        color: white;
+        font-weight: bold;
+      }
+      input {
+        border: 0.1em solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: inherit;
+        padding-left: 7px;
+      }
+    }
+    .search-btn {
+      .row {
+        text-align: center;
+        input {
+          width: 30%;
+          background-color: #000000;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  }
+  .tableBox {
+      margin-bottom: 100px;
+      .design-actions-ville {
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        a:hover {
+          font-weight: bold;
+        }
+        a:first-child {
+          padding-right: 7px;
+        }
+      }
+      #ville_form_nom, #ville_form_codePostal {
+        width: 60%;
+        height: 30px;
+        border: 0;
+        border-bottom:1px solid #ccc;
+        outline: none;
+        text-align: center;
+      }
+
+      #ville_form_add {
+        width: 50%;
+        margin: 0;
+      }
+  }
+}

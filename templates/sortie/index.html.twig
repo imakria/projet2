@@ -5,8 +5,6 @@
             {# {{ encore_entry_script_tags('app') }} #}
             <!-- Flashy depends on jQuery -->
 
-
-
         {% endblock %}
 
 
@@ -18,148 +16,165 @@
             Bonjour {{ message }}
         </div>
     {% endfor %}
-    {{ participant.id }}
+    {% for message in app.flashes('error') %}
+        <div class="messageErreur">
+            Bonjour {{ message }}
+        </div>
+    {% endfor %}
 
+    <style>
+        body {
+            background-image: url({{ asset('../public/img/background.jpg') }});
+            background-attachment: fixed;
+        }
+    </style>
+    <main data-router-wrapper>
+        <div data-router-view="home" class="homeSection">
+            <div class="home-content">
 
-    <h2>Filtrer les sorties</h2>
-    <section>
-        {{ form_start(rechercheForm) }}
+{#                {% include '/inc/mapsApi/maps.html.twig' %}#}
 
-        <div class="flexBlocColumns">
-            <div class="column1">
-                <div class="row">
-                    {{ form_row(rechercheForm.campus) }}
+                <h2 class="h2Home">Filtrer les sorties</h2>
+                <section class="home">
+                    {{ form_start(rechercheForm) }}
 
-                    {# <label for="campus">Campus</label> #}
-                    {# <input id="campus" type="select"> #}
-                </div>
+                    <div class="flexBlocColumns">
+                        <div class="column1">
+                            <div class="row">
+                                {{ form_row(rechercheForm.campus) }}
 
-                <div class="row">
-                    {{ form_row(rechercheForm.nomContient) }}
+                                {# <label for="campus">Campus</label> #}
+                                {# <input id="campus" type="select"> #}
+                            </div>
 
-                    {# <label for="tripName">Le nom de la sortie contient:</label> #}
-                    {# <input type="search" id="tripName" placeholder="search"> #}
-                </div>
+                            <div class="row">
+                                {{ form_row(rechercheForm.nomContient) }}
 
-                <div id="fromTo" class="row">
-                    <div>
-                        {{ form_row(rechercheForm.dateDebut) }}
+                                {# <label for="tripName">Le nom de la sortie contient:</label> #}
+                                {# <input type="search" id="tripName" placeholder="search"> #}
+                            </div>
 
-                        {# <label for="form">Entre</label> #}
-                        {# <input id="form" type="date"> #}
+                            <div id="fromTo" class="row">
+                                <div id="from">
+                                    {{ form_row(rechercheForm.dateDebut) }}
+
+                                    {# <label for="form">Entre</label> #}
+                                    {# <input id="form" type="date"> #}
+                                </div>
+                                <div>
+                                    {{ form_row(rechercheForm.dateFin) }}
+
+                                    {# <label id="spaceTo" for="to">et</label> #}
+                                    {# <input id="to" type="date"> #}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column2">
+                            <div class="row">
+                                {{ form_row(rechercheForm.organisateur) }}
+
+                                {# <input id="check1" type="checkbox"> #}
+                                {# <label for="check1"> Sorties dont je suis l'organisateur/trice</label> #}
+                            </div>
+                            <div class="row">
+                                {{ form_row(rechercheForm.inscrit) }}
+
+                                {# <input id="check2" type="checkbox"> #}
+                                {# <label for="check2"> Sorties auxquelles je suis inscrit/e</label> #}
+                            </div>
+                            <div class="row">
+                                {{ form_row(rechercheForm.pasInscrit) }}
+
+                                {# <input id="check3" type="checkbox"> #}
+                                {# <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label> #}
+                            </div>
+                            <div class="row">
+                                {{ form_row(rechercheForm.sortiesPassees) }}
+
+                                {# <input id="check4" type="checkbox"> #}
+                                {# <label for="check4"> Sorties passées</label> #}
+                            </div>
+                        </div>
+
+                        <div class="submitBtn">
+                            {{ form_row(rechercheForm.submit) }}
+
+                            {# <div class="row"> #}
+                            {# <input type="submit" class="btn" value="Enregister"> #}
+                            {# </div> #}
+                        </div>
                     </div>
-                    <div>
-                        {{ form_row(rechercheForm.dateFin) }}
+                    {{ form_end(rechercheForm) }}
 
-                        {# <label id="spaceTo" for="to">et</label> #}
-                        {# <input id="to" type="date"> #}
+                </section>
+
+
+                <section class="tableBox">
+                    <table>
+                        <thead>
+                        <tr id="headColor">
+                            <th>Nom de la sortie</th>
+                            <th>Date de la sortie</th>
+                            <th>Clôture</th>
+                            <th>Inscrits/places</th>
+                            <th>Etat</th>
+                            <th>Inscrit</th>
+                            <th>Organisateur</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {# Change le la route de redirection if inscrit or desister #}
+                        {% set route = '' %}
+                        {# Change le titre dans la colonne action #}
+                        {% for sortie in sorties %}
+                            {% set inscrit = false %}
+                            {% for participant in sortie.participants %}
+                                {% if participant.id == app.token.user.id %}
+                                    {% set inscrit = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if inscrit %}
+                                {% set titreInscrit = "Se désister" %}
+                                {% set route = "desister" %}
+                            {% else %}
+                                {% set titreInscrit = "S'inscrire" %}
+                                {% set route = "inscription" %}
+
+                            {% endif %}
+                            <tr>
+                                <td>{{ sortie.nom }}</td>
+                                <td>{{ sortie.dateHeureDebut | date("d/m/Y H:i") }}</td>
+                                <td>{{ sortie.dateLimiteInscription | date("d/m/Y H:i") }}</td>
+                                <td>{{ sortie.participants | length }} /{{ sortie.nbInscriptionMax }}</td>
+                                <td>{{ sortie.etat }}</td>
+                                <td>{{ inscrit ? '✔' : '' }}</td>
+                                <td>{{ sortie.organisateur }}</td>
+                                <td class="design-actions-home">
+                                    <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
+                                    <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
+                                    <a href="{{ path(''~route~'', { 'id': sortie.id }) }}">{{ titreInscrit }}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </section>
+
+                <div class="js-filter-pagination">
+                    {{ knp_pagination_render(sorties) }}
+                </div>
+                <div id="createTripBtn">
+                    <div class="row">
+                        <a href="{{ path('addSortie') }}">
+                            <button type="submit" class="btn">Créer une sortie</button>
+                        </a>
                     </div>
                 </div>
-            </div>
-
-            <div class="column2">
-                <div class="row">
-                    {{ form_row(rechercheForm.organisateur) }}
-
-                    {# <input id="check1" type="checkbox"> #}
-                    {# <label for="check1"> Sorties dont je suis l'organisateur/trice</label> #}
-                </div>
-                <div class="row">
-                    {{ form_row(rechercheForm.inscrit) }}
-
-                    {# <input id="check2" type="checkbox"> #}
-                    {# <label for="check2"> Sorties auxquelles je suis inscrit/e</label> #}
-                </div>
-                <div class="row">
-                    {{ form_row(rechercheForm.pasInscrit) }}
-
-                    {# <input id="check3" type="checkbox"> #}
-                    {# <label for="check3"> Sorties auxquelles je ne suis pas inscrit/e</label> #}
-                </div>
-                <div class="row">
-                    {{ form_row(rechercheForm.sortiesPassees) }}
-
-                    {# <input id="check4" type="checkbox"> #}
-                    {# <label for="check4"> Sorties passées</label> #}
-                </div>
-            </div>
-
-            <div class="submitBtn">
-                {{ form_row(rechercheForm.submit) }}
-
-                {# <div class="row"> #}
-                {# <input type="submit" class="btn" value="Enregister"> #}
-                {# </div> #}
             </div>
         </div>
-        {{ form_end(rechercheForm) }}
-
-    </section>
-
-
-
-    <section class="tableBox">
-        <table>
-            <thead>
-            <tr id="headColor">
-                <th>Nom de la sortie</th>
-                <th>Date de la sortie</th>
-                <th>Clôture</th>
-                <th>Inscrits/places</th>
-                <th>Etat</th>
-                <th>Inscrit</th>
-                <th>Organisateur</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {# Change le la route de redirection if inscrit or desister #}
-            {% set route = '' %}
-            {# Change le titre dans la colonne action #}
-            {% for sortie in sorties %}
-                {% set inscrit = false %}
-                {% for participant in sortie.participants %}
-                    {% if participant.id == app.token.user.id %}
-                        {% set inscrit = true %}
-                    {% endif %}
-                {% endfor %}
-                {% if inscrit %}
-                    {% set titreInscrit = "Se désister" %}
-                    {% set route = "desister"%}
-                {% else %}
-                    {% set titreInscrit = "S'inscrire" %}
-                    {% set route = "inscription"%}
-
-                {% endif %}
-                <tr>
-                    <td>{{ sortie.nom }}</td>
-                    <td>{{ sortie.dateHeureDebut | date("d/m/Y H:i") }}</td>
-                    <td>{{ sortie.dateLimiteInscription | date("d/m/Y H:i") }}</td>
-                    <td>{{ sortie.participants | length }} /{{ sortie.nbInscriptionMax }}</td>
-                    <td>{{ sortie.etat }}</td>
-                    <td>{{ inscrit ? 'X' : '' }}</td>
-                    <td>{{ sortie.organisateur }}</td>
-                    <td>
-                        <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
-                        <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
-                        <a href="{{ path(''~route~'', { 'id': sortie.id }) }}">{{ titreInscrit }}</a>
-                    </td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
-    </section>
-
-    <div id="createTripBtn">
-        <div class="row">
-            <a href="{{ path('addSortie') }}">
-                <button type="submit" class="btn">Créer une sortie</button>
-            </a>
-        </div>
-    </div>
-    <div class="js-filter-pagination">
-        {{ knp_pagination_render(sorties) }}
-    </div>
+    </main>
 {% endblock %}

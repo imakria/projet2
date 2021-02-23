@@ -56,7 +56,7 @@
 
                     {#                    <label for="duration">Durée :</label>#}
                     {#                    <input type="number" id="duration" name="duration">#}
-                    <span id="minutes">minutes</span>
+{#                    <span id="minutes">minutes</span>#}
                 </div>
 
                 <div class="row">
@@ -131,26 +131,29 @@
 
 
     </section>
-    <h3>Liste des participants inscrits:</h3>
+    <section class="listeParticipant">
+        <h3>Liste des participants inscrits:</h3>
 
-    <section class="tableBox">
-        <table>
-            <thead>
-            <tr id="headColor">
-                <th>Pseudo</th>
-                <th>Nom</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for participant in sortie.participants %}
-                <tr>
-                    <td>{{ participant.pseudo }} </td>
-                    <td> {{ participant.nom }}</td>
+        <section class="tableBox">
+            <table>
+                <thead>
+                <tr id="headColor">
+                    <th>Pseudo</th>
+                    <th>Nom</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for participant in sortie.participants %}
+                    <tr>
+                        <td><a href="{{ path('profileParticipant', {id: participant.id}) }}">{{ participant.pseudo }} </a></td>
+                        <td> {{ participant.nom }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
     </section>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

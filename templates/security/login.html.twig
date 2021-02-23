@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
+{% block navbar %} {% endblock %}
 
 {% block body %}
 <form method="post">
@@ -13,20 +14,12 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
+    <div class="flex-container">
+        <div class="column1-logo">
+            <a href="{{ path('home') }}"><img class="logoSite" src="{{ asset('img/logo.png') }}" alt=""></a>
+        </div>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputPseudo">Identifiant</label>
-    <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
-    <input type="checkbox" id="remember_me" name="_remember_me" checked/>
-    <label for="remember_me">Keep me logged in</label>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
+        {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
 
@@ -35,10 +28,32 @@
                 <input type="checkbox" name="_remember_me"> Remember me
             </label>
         </div>
-    #}
+        #}
+        <div class="column2-signIn">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <div class="row">
+                <label for="inputPseudo">Identifiant:</label>
+                <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus>
+            </div>
+            <div class="row">
+                <label for="inputPassword">Password:</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" required>
+            </div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+            <div class="row-keepLogged">
+                <div class="row">
+                    <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                    <label for="remember_me">Keep me logged in</label>
+                </div>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Sign in
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 {% endblock %}

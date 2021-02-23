@@ -1,0 +1,59 @@
+form {
+  .flex-container {
+    width: 90%;
+    margin: 300px auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    .column1-logo {
+    }
+    .column2-signIn {
+      background-color: black;
+      padding: 0 30px;
+      box-shadow: 0px 0px 80px 10px rgba(255,255,255,1);
+      border-radius: 10px;
+      h1{
+        color: white;
+      }
+      .row {
+        label {
+        color: white;
+        font-weight: bold;
+      }
+        input {
+        border: 0.1em solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: inherit;
+        padding-left: 7px;
+          width: 100%;
+      }
+      }
+      .row-keepLogged {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+          width: 40%;
+          background-color: #000000;
+          border-radius: 5px;
+          border: 3px solid #C74091;
+          color: white;
+          font-size: 14px;
+          font-weight: bold;
+          margin: 10px 10px;
+          }
+        button:hover {
+          background-color: #C74091;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        .row {
+          label {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

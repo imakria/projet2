@@ -18,13 +18,26 @@ Class SearchData
 
     private $dateFin;
 
-    private $organisateur;
+    /**
+     * @var boolean
+     */
+    private $organisateur = false;
 
-    private $inscrit;
+    /**
+     * @var boolean
+     */
+    private $inscrit = false;
 
-    private $pasInscrit;
 
-    private $sortiesPassees;
+    /**
+     * @var boolean
+     */
+    private $pasInscrit = false;
+
+    /**
+     * @var boolean
+     */
+    private $sortiesPassees = false;
 
     private $recherche;
 
@@ -94,68 +107,73 @@ Class SearchData
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getOrganisateur()
+    public function isOrganisateur(): bool
     {
         return $this->organisateur;
     }
 
     /**
-     * @param mixed $organisateur
+     * @param bool $organisateur
      */
-    public function setOrganisateur($organisateur): void
+    public function setOrganisateur(bool $organisateur): void
     {
         $this->organisateur = $organisateur;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getInscrit()
+    public function isInscrit(): bool
     {
         return $this->inscrit;
     }
 
     /**
-     * @param mixed $inscrit
+     * @param bool $inscrit
      */
-    public function setInscrit($inscrit): void
+    public function setInscrit(bool $inscrit): void
     {
         $this->inscrit = $inscrit;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getPasInscrit()
+    public function isPasInscrit(): bool
     {
         return $this->pasInscrit;
     }
 
     /**
-     * @param mixed $pasInscrit
+     * @param bool $pasInscrit
      */
-    public function setPasInscrit($pasInscrit): void
+    public function setPasInscrit(bool $pasInscrit): void
     {
         $this->pasInscrit = $pasInscrit;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getSortiesPassees()
+    public function isSortiesPassees(): bool
     {
         return $this->sortiesPassees;
     }
 
     /**
-     * @param mixed $sortiesPassees
+     * @param bool $sortiesPassees
      */
-    public function setSortiesPassees($sortiesPassees): void
+    public function setSortiesPassees(bool $sortiesPassees): void
     {
         $this->sortiesPassees = $sortiesPassees;
     }
+
+
+
+
+
 
     /**
      * @return mixed
@@ -172,6 +190,7 @@ Class SearchData
     {
         $this->recherche = $recherche;
     }
+
 
 
 

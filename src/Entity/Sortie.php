@@ -72,7 +72,7 @@ class Sortie
 //    /**
 //     * @ORM\ManyToOne (targetEntity="App\Entity\Ville", inversedBy="sorties")
 //     */
-//    private $ville;
+    private $ville;
 
     /**
      * @ORM\ManyToOne (targetEntity="App\Entity\Participant")

@@ -48,6 +48,29 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('dateFin', $search->getDateFin());
         }
 
+        if($search->isOrganisateur()) {
+            $qb = $qb
+                ->andWhere('s.organisateur = :organisateur')
+                ->setParameter('organisateur', "{$id}");
+        }
+
+        if($search->isInscrit()) {
+            $qb = $qb
+                ->andWhere(':participant MEMBER OF s.participants')
+                ->setParameter('participant', "{$id}");
+        }
+
+        if($search->isPasInscrit()) {
+            $qb = $qb
+                ->andWhere(':participant NOT MEMBER OF s.participants')
+                ->setParameter('participant', "{$id}");
+        }
+
+        if($search->isSortiesPassees()) {
+            $qb = $qb
+                ->andWhere(':date > s.dateHeureDebut')
+                ->setParameter('date', $date);
+        }
 
 
         return $qb;

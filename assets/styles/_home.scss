@@ -6,6 +6,9 @@ body {
   margin: 0 auto;
   padding: 0;
   width: 80%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  //position: absolute;
 }
 
 section {
@@ -16,17 +19,29 @@ form {
   width: 100%;
 }
 
-h2 {
-  width: 80%;
-  color: #E7287D;
-  font-size: 32px;
+.h2Home {
+  //width: 80%;
+  color: white;
+  font-size: 52px;
 
+}
+
+.home {
+  color: white;
+  font-weight: bold;
 }
 
 .flexBlocColumns {
   display: flex;
   justify-content: center;
 
+  .column1 {
+    .row:nth-child(3) {
+      .form-group {
+        padding-left: 0;
+      }
+    }
+  }
   .column2 {
     margin-left: 20px;
   }
@@ -68,7 +83,6 @@ input {
 .tableBox {
   overflow-y: scroll;
   width: 100%;
-  height: 500px;
   margin-top: 20px;
 
 
@@ -76,21 +90,45 @@ input {
     margin: 0px auto 0px auto;
     table-layout: auto;
     width: 100%;
-
     th {
       padding: 10px;
       position: sticky;
       top: 0;
-      background-color: #09ABA2;
+      background-color: #000000;
+      text-align: center;
       color: white;
       text-shadow: rgba(0, 0, 0, 0.3) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
     }
 
     td {
       padding: 10px;
-
+      text-align: center;
     }
+
+    .design-actions-home {
+      column-width: auto;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+        font-weight: bold;
+      }
+      a:first-child {
+        padding-right: 7px;
+      }
+      a:last-child {
+        display: block;
+        background: linear-gradient(90deg, #DB2D7F, #805EFD);
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+        padding: 5px 3px;
+        border-radius: 5px;
+        margin-top: 7px;
+      }
+    }
+
   }
 
 
@@ -100,17 +138,17 @@ input {
 }
 
 table, td, th {
-  border: 1px solid #d0d0d0;
+  //border: 1px solid #d0d0d0;
   border-collapse: collapse;
-  text-align: left;
+  border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 
-//tr:nth-child(odd) {
-//  background-color: #e8e8e8;
-//}
-
 tr:nth-child(even) {
+  background-color: white;
+}
+
+tr:nth-child(odd) {
   background-color: #ffffff;
 
   /*	background-color: #e8e8e8;
@@ -188,6 +226,25 @@ button[type="submit"] {
   font-size: 18px;
 }
 
+.js-filter-pagination {
+  margin-top: 30px;
+    .pagination {
+      .current {
+        background-color: white;
+        font-size: 20px;
+        padding: 5px 15px;
+        border-radius: 50%;
+        font-weight: bold;
+
+      }
+      span {
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+}
 
 /*--------------------------------*/
 

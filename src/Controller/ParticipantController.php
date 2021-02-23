@@ -16,15 +16,15 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ParticipantController extends AbstractController
 {
-    /**
-     * @Route("/participant", name="participant")
-     */
-    public function index(): Response
-    {
-        return $this->render('participant/index.html.twig', [
-            'controller_name' => 'ParticipantController',
-        ]);
-    }
+//    /**
+//     * @Route("/participant", name="participant")
+//     */
+//    public function index(): Response
+//    {
+//        return $this->render('participant/index.html.twig', [
+//            'controller_name' => 'ParticipantController',
+//        ]);
+//    }
 
     /**
      * @Route("/myProfile/", name="myProfile")
@@ -85,4 +85,25 @@ class ParticipantController extends AbstractController
             'participantConnected' => $participantConnected,
         ]);
     }
+
+    /**
+     * @Route("/profile/{id}", name="profileParticipant")
+     * @param EntityManagerInterface $em
+     * @param Request $rq
+     * @param SluggerInterface $slugger
+     * @param ParticipantRepository $repository
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
+     */
+    public function profileParticipant(EntityManagerInterface $em, Request $rq, SluggerInterface $slugger, ParticipantRepository $repository, UserPasswordEncoderInterface $passwordEncoder, $id): Response
+    {
+
+        $participant = $repository->find($id);
+
+        return $this->render('participant/showParticipant.html.twig', [
+//            'participantDetails' => $participantDetails,
+            'participant' => $participant,
+        ]);
+    }
+
 }

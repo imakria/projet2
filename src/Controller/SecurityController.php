@@ -21,7 +21,7 @@ class SecurityController extends AbstractController
          if ($this->getUser()) {
 //             $flashy->success('Event created!', 'http://your-awesome-link.com');
              $this->addFlash('success', $this->getUser()->getUsername());
-             return $this->redirectToRoute('homeParticipant', [
+             return $this->redirectToRoute('home', [
                  'participant' => $this->getUser()->getUsername(),
              ]);
          }

@@ -33,10 +33,10 @@ class Ville
      */
     private $codePostal;
 
-    /**
-     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="ville")
-     */
-    private $sorties;
+//    /**
+//     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="ville")
+//     */
+//    private $sorties;
 
 
 

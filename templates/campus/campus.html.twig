@@ -38,9 +38,9 @@
         {% for campus in campuses %}
             <tr>
                 <td>{{ campus.nom }}</td>
-                <td>
-                    <a href="{{ path('modifyCampus', {'id': campus.id}) }}"><button>Modifier</button></a>
-                    <a href="{{ path('deleteCampus', {'id': campus.id}) }}"><button>Supprimer</button></a>
+                <td class="design-actions-campus">
+                    <a href="{{ path('modifyCampus', {'id': campus.id}) }}">Modifier</a>
+                    <a href="{{ path('deleteCampus', {'id': campus.id}) }}">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

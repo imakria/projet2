@@ -15,10 +15,16 @@ class VilleFormType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => ' '
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Ville',
+                ]
             ])
             ->add('codePostal', TextType::class, [
-                'label' => ' '
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Code postal',
+                ]
             ])
             ->add('add', SubmitType::class, [
                 "attr" => ["value" => "ajouter"]

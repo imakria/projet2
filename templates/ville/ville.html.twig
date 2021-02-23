@@ -3,57 +3,64 @@
 {% block title %}Hello VilleController!{% endblock %}
 
 {% block body %}
-<body>
-	<h2>Gérer les villes</h2>
-	<h3>Filtrer les villes</h3>
 
-	<section>
-		<form action="#">
-			<div class="flexbox-container">
-				<div class="row">
-					<label for="name">Le nom contient: </label>
-					<input id="name" type="search">
-				</div>
+    <main data-router-wrapper>
+        <div data-router-view="about" class="about">
+            <div class="about-content">
 
-				<div class="search-btn">
-					<div class="row">
-						<input type="submit" class="btn" value="Rechercher">
-					</div>
-				</div>
-			</div>
-		</form>
-	</section>
+                <h2>Gérer les villes</h2>
+                <h3>Filtrer les villes</h3>
+
+                <section>
+                    <form action="#">
+                        <div class="flexbox-container">
+                            <div class="row">
+                                <label for="name">Le nom contient: </label>
+                                <input id="name" type="search">
+                            </div>
+
+                            <div class="search-btn">
+                                <div class="row">
+                                    <input type="submit" class="btn" value="Rechercher">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
 
-	<section class="tableBox">
-		<table>
-			<thead>
-				<tr id="headColor">
-					<th>Ville</th>
-					<th>Code postal</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
+                <section class="tableBox">
+                    <table>
+                        <thead>
+                        <tr id="headColor">
+                            <th>Ville</th>
+                            <th>Code postal</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
 
-			<tbody>
-			{% for ville in villes %}
-				<tr>
-					<td>{{ ville.nom }}</td>
-					<td>{{ ville.codePostal }}</td>
-					<td>
-					<a href="{{ path('modifyCity', {'id': ville.id}) }}"><button>Modifier</button></a>
-					<a href="{{ path('deleteCity', {'id': ville.id}) }}"><button>Supprimer</button></a>
-					</td>
-				</tr>
-			{% endfor %}
-			<tr>
-			{{ form_start(villeForm) }}
-			<td>{{ form_row(villeForm.nom) }}</td>
-			<td>{{ form_row(villeForm.codePostal) }}</td>
-			<td>{{ form_row(villeForm.add) }}</td>
-			{{ form_end(villeForm) }}
-</tr>
-			</tbody>
-		</table>
-	</section>
+                        <tbody>
+                        {% for ville in villes %}
+                            <tr>
+                                <td>{{ ville.nom }}</td>
+                                <td>{{ ville.codePostal }}</td>
+                                <td class="design-actions-ville">
+                                    <a href="{{ path('modifyCity', {'id': ville.id}) }}">Modifier</a>
+                                    <a href="{{ path('deleteCity', {'id': ville.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            {{ form_start(villeForm) }}
+                            <td>{{ form_row(villeForm.nom) }}</td>
+                            <td>{{ form_row(villeForm.codePostal) }}</td>
+                            <td>{{ form_row(villeForm.add) }}</td>
+                            {{ form_end(villeForm) }}
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </main>
 {% endblock %}

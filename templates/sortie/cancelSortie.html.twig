@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annuler Sortie{% endblock %}
+
+{% block body %}
+    <h2>Annuler une sortie</h2>
+
+    <section class="cancelSortie">
+        <div class="columnSortie">
+            <div class="rowCamcelSortie">
+                <label for="nomSortie"> Nom de la sortie:</label>
+                <p>{{ sortie.nom }}</p>
+            </div>
+            <div class="rowCamcelSortie">
+                <label for="dateSortie">Date de la sortie: </label>
+                <p>{{ sortie.dateHeureDebut | date("d/m/Y") }}</p>
+            </div>
+            <div class="rowCamcelSortie">
+                <label for="campus">Campus:</label>
+                <p>{{ sortie.campus }}</p>
+            </div>
+            <div class="rowCamcelSortie">
+                <label for="lieu">Lieu:</label>
+                <p>{{ sortie.lieu }}</p>
+            </div>
+            <div class="divMotifBox">
+                <div class="motifBox">
+                    {{ form_start(cancelForm) }}
+                    {{ form_row(cancelForm.infosSortie) }}
+                </div>
+                <div class="rowMotifBox">
+                    <div>
+                        <button typpe="submit" class="btnCancelSortie"> Supprimer la sortie</button>
+                        {{ form_end(cancelForm) }}
+                    </div>
+                    <div >
+                        <a href="{{ path('home') }}">
+                            <button class="btnCancelSortie2">Annuler</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
