@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Campus;
 use App\Form\CampusFormType;
+use App\Form\SearchCampusType;
 use App\Repository\CampusRepository;
 use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,10 +26,25 @@ class CampusController extends AbstractController
     public function allCampus(EntityManagerInterface $em, CampusRepository $campusRepository, Request $rq): Response
     {
 
+
+        $searchForm = $this->createForm(SearchCampusType::class);
+        $searchForm->handleRequest($rq);
+
         $campus = new Campus();
-        $campuses = $campusRepository->findAll();
         $formCampus = $this->createForm(CampusFormType::class, $campus);
         $formCampus->handleRequest($rq);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $searchInput = $searchForm->get('search')->getData();
+            $searchCampus = $campusRepository->search($searchInput);
+
+            return $this->render('campus/campus.html.twig', [
+                'campuses' => $searchCampus,
+                'campusForm' => $formCampus->createView(),
+                'searchForm' => $searchForm->createView(),
+            ]);
+        }
+        $campuses = $campusRepository->findAll();
 
         if ($formCampus->isSubmitted() && $formCampus->isValid()) {
 
@@ -40,9 +56,10 @@ class CampusController extends AbstractController
 
 
         return $this->render('campus/campus.html.twig', [
-            'controller_name' => 'VilleController',
             'campuses' => $campuses,
             'campusForm' => $formCampus->createView(),
+            'searchForm' => $searchForm->createView(),
+
         ]);
     }
 

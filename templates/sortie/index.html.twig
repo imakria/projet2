@@ -32,7 +32,7 @@
         <div data-router-view="home" class="homeSection">
             <div class="home-content">
 
-{#                {% include '/inc/mapsApi/maps.html.twig' %}#}
+                {# {% include '/inc/mapsApi/maps.html.twig' %} #}
 
                 <h2 class="h2Home">Filtrer les sorties</h2>
                 <section class="home">
@@ -136,13 +136,22 @@
                                     {% set inscrit = true %}
                                 {% endif %}
                             {% endfor %}
+
                             {% if inscrit %}
                                 {% set titreInscrit = "Se désister" %}
                                 {% set route = "desister" %}
                             {% else %}
                                 {% set titreInscrit = "S'inscrire" %}
                                 {% set route = "inscription" %}
+                            {% endif %}
 
+                            {% if sortie.dateHeureDebut < date %}
+                                {% set titreInscrit = "" %}
+                            {% endif %}
+
+                            {% set titreModifier = "" %}
+                            {% if sortie.getOrganisateur().id == app.user.id and sortie.getEtat().id == 91 %}
+                                {% set titreModifier = "Modifier" %}
                             {% endif %}
                             <tr>
                                 <td>{{ sortie.nom }}</td>
@@ -154,7 +163,7 @@
                                 <td>{{ sortie.organisateur }}</td>
                                 <td class="design-actions-home">
                                     <a href="{{ path('showSortie', { 'id': sortie.id }) }}">Afficher</a>
-                                    <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">Modifier</a>
+                                    <a href="{{ path('modifySortie', { 'id': sortie.id }) }}">{{ titreModifier }}</a>
                                     <a href="{{ path(''~route~'', { 'id': sortie.id }) }}">{{ titreInscrit }}</a>
                                 </td>
                             </tr>

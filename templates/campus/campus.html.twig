@@ -7,12 +7,13 @@
 <h2>Gérer les campus</h2>
 <h3>Filtrer les campus</h3>
 
-<section>
-    <form action="#">
+<section class="campusForm">
         <div class="flexbox-container">
             <div class="row">
-                <label for="name">Le nom contient: </label>
-                <input id="name" type="search">
+{#                <label for="name">Le nom contient: </label>#}
+{#                <input id="name" type="search">#}
+                {{ form_start(searchForm) }}
+                {{ form_row(searchForm.search) }}
             </div>
 
             <div class="search-btn">
@@ -20,8 +21,8 @@
                     <input type="submit" class="btn" value="Rechercher">
                 </div>
             </div>
+                {{ form_end(searchForm) }}
         </div>
-    </form>
 </section>
 
 

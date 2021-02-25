@@ -41,7 +41,6 @@ class SortieController extends AbstractController
 
         $datas = new SearchData();
 
-
         $rechercheForm = $this->createForm(SearchFormluraireType::class, $datas);
         $rechercheForm->handleRequest($rq);
 
@@ -65,7 +64,8 @@ class SortieController extends AbstractController
             'participant' => $participant,
             'sorties' => $dataFilter,
             'rechercheForm' => $rechercheForm->createView(),
-            'inscrit' => $inscrit
+            'inscrit' => $inscrit,
+            'date' => $date
         ]);
     }
 

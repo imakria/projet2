@@ -47,4 +47,11 @@ class CampusRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function search($searchInput)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->andWhere('c.nom LIKE :searchInput')
+            ->setParameter(':searchInput', '%' . $searchInput . '%');
+        return $qb->getQuery()->getResult();
+    }
 }
